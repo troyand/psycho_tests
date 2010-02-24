@@ -11,7 +11,13 @@ if __name__ == '__main__':
             for letter, question_text in re.findall(
                     u'(\D)\) (.*)\.', question_variants):
 #remove some bizzare character from the original text file
-                questions[qn][letter] = question_text.replace(u'\xad', '')
+                questions[qn][letter] = question_text.replace(u'\xad', '')+'.'
+
+    import json
+    with codecs.open('questions.json', 'w', encoding='utf-8') as q_json:
+        json.dump(questions, q_json, indent=2, ensure_ascii=False)
+    q_json.close()
+    #print json.dumps(questions, indent=2, ensure_ascii=False)
 
     answers = {}
     with codecs.open('answers.txt', encoding='utf-8') as answers_file:

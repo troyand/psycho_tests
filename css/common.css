@@ -1,0 +1,20 @@
+body {
+    text-align: center;
+    font-size: 2em;
+}
+
+.question {
+    display: none;
+}
+
+.answer {
+    cursor: pointer;
+}
+
+.back {
+    cursor: pointer;
+}
+
+.hover {
+    background-color: #eeeeff;
+}
