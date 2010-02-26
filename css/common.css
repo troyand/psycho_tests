@@ -11,8 +11,13 @@ body {
     cursor: pointer;
 }
 
-.back {
+.back, .forward {
     cursor: pointer;
+    display: inline;
+}
+
+.checked {
+    background-color: #eeffee;
 }
 
 .hover {

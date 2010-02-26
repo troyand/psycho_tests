@@ -10,7 +10,6 @@ $(document).ready(function(){
     }
     $.getJSON('./questions.json', function(data) {
         $.each(data, function(question_number, value) { 
-            //$('body').append('<div class="question" id="question'+question_number+'"></div>' );
             var qdiv = $('<div/>', {
                 'class': 'question'
             });
@@ -26,12 +25,27 @@ $(document).ready(function(){
                 adiv.appendTo(qdiv);
                 adiv.click(function() {
                     qdiv.hide();
+                    //remove checked status from the previously checked item
+                    qdiv.children('div.answer').removeClass('checked');
+                    adiv.addClass('checked');
+                    answers[question_number] = variant;
+                    if(qdiv.children('.forward').length==0){
+                        var forward = $('<div/>', {
+                            text: ' >>>',
+                            'class': 'forward'
+                        });
+                        forward.appendTo(qdiv);
+                        forward.click(function() {
+                            qdiv.hide();
+                            qdiv.next().show();
+                        });
+                    }
                     qdiv.next().show();
                 });
             });
             if(qdiv.prev().length != 0){
-                var back = $('<h4/>', {
-                    text: '<<<',
+                var back = $('<div/>', {
+                    text: '<<< ',
                     'class': 'back'
                 });
                 back.appendTo(qdiv);
@@ -50,6 +64,5 @@ $(document).ready(function(){
                 $(this).removeClass('hover');
             }
         );
-        //
     });
 });
