@@ -16,14 +16,15 @@ if __name__ == '__main__':
     import json
     with codecs.open('questions.json', 'w', encoding='utf-8') as q_json:
         json.dump(questions, q_json, indent=2, ensure_ascii=False)
-    q_json.close()
-    #print json.dumps(questions, indent=2, ensure_ascii=False)
 
     answers = {}
     with codecs.open('answers.txt', encoding='utf-8') as answers_file:
         for question_number, variant in re.findall(
                 u'(\d+)(\D)', answers_file.read()):
             answers[int(question_number)] = variant.lower()
+
+    with codecs.open('answers.json', 'w', encoding='utf-8') as a_json:
+        json.dump(answers, a_json, indent=2, ensure_ascii=False)
 
     field_answers = {}
     with codecs.open('fields.txt', encoding='utf-8') as fields_file:
@@ -33,6 +34,9 @@ if __name__ == '__main__':
             for question_number, variant in re.findall(u'(\d+)(\D)', csv):
                 field_answers[field][int(question_number)] = variant
 #            print field, field_answers[field]
+
+    with codecs.open('field_answers.json', 'w', encoding='utf-8') as f_json:
+        json.dump(field_answers, f_json, indent=2, ensure_ascii=False)
 
     user_answers = {}
 

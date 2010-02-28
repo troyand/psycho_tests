@@ -7,7 +7,7 @@ body {
     display: none;
 }
 
-.answer {
+.answer, .check {
     cursor: pointer;
 }
 
@@ -22,4 +22,31 @@ body {
 
 .hover {
     background-color: #eeeeff;
+}
+
+.positive {
+    background-color: #eeffee;
+}
+
+.negative {
+    background-color: #ffeeee;
+}
+
+.positive, .negative {
+    border-style: solid;
+    border-color: #ffffff;
+    font-size: 0.5em;
+}
+
+.field {
+    text-align: right;
+}
+
+table {
+    width: 100%;
+    font-size: 0.5em;
+}
+
+td {
+    border: 1px solid;
 }
